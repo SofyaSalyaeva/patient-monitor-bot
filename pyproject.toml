@@ -1,0 +1,32 @@
+[project]
+name = "patient-monitor-bot"
+version = "1.0.0"
+description = "Telegram health-monitoring bot"
+requires-python = ">=3.14"
+dependencies = [
+    "aiogram>=3.8,<4",
+    "pydantic-settings>=2.0",
+    "openai>=1.0",
+    "sqlalchemy>=2.0",
+    "aiosqlite>=0.19",
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=4.1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["app"]
+omit = ["app/main.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 65
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.14",
+]

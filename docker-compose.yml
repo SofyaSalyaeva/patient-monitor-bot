@@ -1,0 +1,13 @@
+services:
+  bot:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - bot_data:/app/data
+    environment:
+      DB_PATH: /app/data/data.db
+    restart: unless-stopped
+
+volumes:
+  bot_data:
