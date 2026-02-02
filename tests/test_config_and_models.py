@@ -1,9 +1,3 @@
-"""
-tests/test_config_and_models.py
-Tests for config properties and ORM model defaults.
-"""
-
-
 class TestSettings:
     def test_db_url_is_sqlite(self):
         from app.core.config import settings
