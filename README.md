@@ -12,7 +12,9 @@
 Пользователь взаимодействует через кнопки меню или свободным текстом — бот понимает оба варианта благодаря модулю NLU (Natural Language Understanding) на основе YandexGPT.
 
 Ссылки:
+
 @psycho_support_program_bot
+
 https://hub.docker.com/repository/docker/sofyasalyaeva/patient-monitor-bot/general
 
 ---
