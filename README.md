@@ -126,20 +126,16 @@ erDiagram
 ```bash
 # Сборка и старт
 cp .env.example .env          # заполнить BOT_TOKEN и Yandex Cloud ключи
-docker-compose up --build -d
+docker compose up --build
 ```
-
-- `docker-compose.yml` поднимает **только бот** — БД это файл `data.db` внутри Docker volume.
-- Бот запускается как `python -m app.main` в slim-образе.
-- Образ можно опубликовать на DockerHub: `docker tag patient-monitor-bot <user>/patient-monitor-bot && docker push`.
 
 ---
 
 ## Тестирование
 
 ```bash
-pip install .[test]
-python -m pytest --cov=app --cov-report=term-missing tests/
+pip install -e . --group=test
+pytest --cov=app --cov-report=term-missing tests/
 ```
 
 | Файл тестов | Что покрыт |
