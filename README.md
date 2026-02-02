@@ -13,9 +13,9 @@
 
 Ссылки:
 
-@psycho_support_program_bot
+[@psycho_support_program_bot](https://t.me/psycho_support_program_bot)
 
-https://hub.docker.com/repository/docker/sofyasalyaeva/patient-monitor-bot/general
+[DockerHub](https://hub.docker.com/r/sofyasalyaeva/patient-monitor-bot)
 
 ---
 
