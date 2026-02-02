@@ -1,6 +1,6 @@
 # Patient Monitor Bot — Документация проекта
 
-## 1. Описание проекта
+## Описание проекта
 
 **Patient Monitor Bot** — Telegram-бот для врачей и пациентов, позволяющий:
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 2. Что видит пользователь
+## Что видит пользователь
 
 1. После `/start` — приветственное сообщение и меню из 6 кнопок.
 2. Можно нажать кнопку или написать текстом, например: *«поставь напоминание выпить магний в 8 вечера»*.
@@ -24,7 +24,7 @@
 
 ---
 
-## 3. Архитектура системы
+## Архитектура системы
 
 ```mermaid
 graph TB
@@ -55,7 +55,7 @@ graph TB
 
 ---
 
-## 4. Схема базы данных (SQLite, файл data.db)
+## Схема базы данных (SQLite, файл data.db)
 
 ```mermaid
 erDiagram
@@ -93,48 +93,7 @@ erDiagram
 
 ---
 
-## 5. Структура файлов
-
-```
-final_project/
-├── app/
-│   ├── core/
-│   │   └── config.py          # pydantic-settings, все секреты из env
-│   ├── db/
-│   │   ├── models.py          # SQLAlchemy declarative models
-│   │   ├── session.py         # async engine + session factory
-│   │   └── repository.py      # Repository pattern (MedicationRepo, SurveyRepo, ScheduleRepo)
-│   ├── services/
-│   │   ├── llm_client.py      # единый async обёртка над Yandex GPT
-│   │   ├── nlu.py             # NLU с кэшем (intent detection)
-│   │   ├── chatbot.py         # поддерживающие ответы
-│   │   ├── summarizer.py      # генерация 30-дневного отчёта
-│   │   └── scheduler.py       # фоновый цикл напоминаний
-│   ├── handlers/
-│   │   ├── keyboards.py       # все InlineKeyboard в одном месте (DRY)
-│   │   ├── states.py          # FSM states
-│   │   ├── main.py            # /start, меню, FSM шаги, callback
-│   │   └── fallback.py        # NLU fallback + маршрутизация по intent
-│   └── main.py                # entrypoint, DI wiring, start polling
-├── tests/
-│   ├── conftest.py            # подстановка dummy env для тестов
-│   ├── test_nlu.py
-│   ├── test_chatbot_summarizer.py
-│   ├── test_scheduler.py
-│   ├── test_handlers_utils.py
-│   └── test_repository.py
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── pyproject.toml
-├── .env.example
-├── .gitignore
-└── PROJECT.md                 # этот файл
-```
-
----
-
-## 6. Паттерны и принципы
+## Паттерны и принципы
 
 | Принцип / паттерн | Где применён |
 |---|---|
@@ -146,7 +105,7 @@ final_project/
 
 ---
 
-## 7. Секреты и безопасность
+## Секреты и безопасность
 
 - Секреты (BOT_TOKEN, YANDEX_CLOUD_API_KEY) загружаются **только** из переменных окружения через `pydantic-settings`.
 - `.env` добавлен в `.gitignore` — никогда не коммитится.
@@ -156,7 +115,7 @@ final_project/
 
 ---
 
-## 8. Docker и развёртывание
+## Docker и развёртывание
 
 ```bash
 # Сборка и старт
@@ -170,10 +129,10 @@ docker-compose up --build -d
 
 ---
 
-## 9. Тестирование
+## Тестирование
 
 ```bash
-pip install -r requirements.txt
+pip install .[test]
 python -m pytest --cov=app --cov-report=term-missing tests/
 ```
 
@@ -189,7 +148,7 @@ Target coverage: **≥ 65 %** (настроен в `pyproject.toml`).
 
 ---
 
-## 10. План работ и оценка времени
+## План работ и оценка времени
 
 | № | Задача | Время | Кто |
 |---|---|---|---|

@@ -9,9 +9,6 @@ dependencies = [
     "openai>=1.0",
     "sqlalchemy>=2.0",
     "aiosqlite>=0.19",
-    "pytest>=7.4",
-    "pytest-asyncio>=0.23",
-    "pytest-cov>=4.1",
 ]
 
 [tool.pytest.ini_options]
@@ -29,4 +26,9 @@ fail_under = 65
 [dependency-groups]
 dev = [
     "ruff>=0.14.14",
+]
+test = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=4.1",
 ]
