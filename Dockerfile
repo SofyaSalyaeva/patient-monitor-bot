@@ -7,7 +7,4 @@ RUN pip install .
 
 COPY app/ ./app/
 
-RUN adduser --disabled-password --gecos "" appuser
-USER appuser
-
 CMD ["python", "-m", "app.main"]
