@@ -1,6 +1,6 @@
 import json
 import pytest
-from datetime import time as dt_time, datetime, timedelta
+from datetime import time as dt_time, datetime, timedelta, UTC
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
@@ -42,7 +42,7 @@ class TestMedicationRepo:
             med_names="Old",
             status="Выпил",
             scheduled_time="08:00",
-            timestamp=datetime.utcnow() - timedelta(days=60),
+            timestamp=datetime.now(UTC) - timedelta(days=60),
         )
         session.add(old)
         await session.commit()

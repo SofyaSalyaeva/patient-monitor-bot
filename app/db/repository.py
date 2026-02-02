@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timedelta, time as dt_time
+from datetime import datetime, timedelta, UTC, time as dt_time
 
 from sqlalchemy import select, delete
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -26,7 +26,7 @@ class MedicationRepo:
                 med_names=med_names,
                 status=status,
                 scheduled_time=scheduled_time,
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(UTC),
             )
         )
         await session.commit()
@@ -35,7 +35,7 @@ class MedicationRepo:
     async def get_last_n_days(
         session: AsyncSession, user_id: int, days: int
     ) -> list[Medication]:
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
         result = await session.execute(
             select(Medication)
             .where(Medication.user_id == user_id, Medication.timestamp >= since)
@@ -61,7 +61,7 @@ class SurveyRepo:
                 username=username,
                 mood=mood,
                 details=details,
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(UTC),
             )
         )
         await session.commit()
@@ -70,7 +70,7 @@ class SurveyRepo:
     async def get_last_n_days(
         session: AsyncSession, user_id: int, days: int
     ) -> list[Survey]:
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
         result = await session.execute(
             select(Survey)
             .where(Survey.user_id == user_id, Survey.timestamp >= since)
